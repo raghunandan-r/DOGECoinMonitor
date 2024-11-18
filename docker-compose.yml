@@ -23,8 +23,9 @@ services:
       interval: 5s
       retries: 5
     restart: always
+    command: -p 5434
     ports:
-      - "5432:5432"
+      - "5434:5433"
 
   pipelinerunner:
     image: pipelinerunner

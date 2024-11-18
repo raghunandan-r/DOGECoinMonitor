@@ -9,5 +9,5 @@ def get_warehouse_creds() -> DBConnection:
         password=os.getenv('WAREHOUSE_PASSWORD', ''),
         db=os.getenv('WAREHOUSE_DB', ''),
         host=os.getenv('WAREHOUSE_HOST', ''),
-        port=int(os.getenv('WAREHOUSE_PORT', 5432)),
+        port=int(os.getenv('WAREHOUSE_PORT', 5434)),
     )

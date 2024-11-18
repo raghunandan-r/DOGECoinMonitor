@@ -10,7 +10,7 @@ class DBConnection:
     user: str
     password: str
     host: str
-    port: int = 5432
+    port: int = 5434
 
 
 class WarehouseConnection:
