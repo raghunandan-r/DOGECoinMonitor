@@ -2,7 +2,7 @@
 variable "aws_region" {
   description = "AWS region"
   type        = string
-  default     = "us-east-1"
+  default     = "us-east-2"
 }
 
 ## Key to allow connection to our EC2 instance
@@ -23,5 +23,5 @@ variable "instance_type" {
 variable "alert_email_id" {
   description = "Email id to send alerts to "
   type        = string
-  default     = "joseph.machado@domain.com"
+  default     = "raghu.dan@live.in"
 }

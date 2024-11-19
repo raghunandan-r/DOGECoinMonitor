@@ -14,6 +14,8 @@ To run locally, you need:
 2. [Github account](https://github.com/)
 3. [Docker](https://docs.docker.com/engine/install/) with at least 4GB of RAM and [Docker Compose](https://docs.docker.com/compose/install/) v1.27.0 or later
 
+**!Note**: replace `open` command in the Makefile with `xdg-open` for WSL2/Linux systems. 
+
 Clone the repo and run the following commands to start the data pipeline:
 
 ```bash
@@ -24,6 +26,22 @@ sleep 30 # wait for Metabase to start
 make ci # run checks and tests
 ```
 Go to [http:localhost:3000](http:localhost:3000) to see the Metabase UI.
+
+When spinngin up the EC2 instance, the Ubuntu AMI specified may not be available. Replace with an equivalent one found from
+
+```bash
+aws ec2 describe-images \
+    --owners <ownerID> \
+    --filters "Name=name,Values=ubuntu/images/hvm-ssd/ubuntu-*-amd64-server-*" \
+    --query 'Images[*].[ImageId,Name,CreationDate]' \
+    --output table \
+    --region <region>
+```
+ and set it in main.tf
+ ```
+ values = ["ubuntu/images/hvm-ssd/ubuntu-jammy-22.04-amd64-server-20240530"]
+```
+
 
 
 ## 1 . ETL Code
@@ -137,8 +155,10 @@ class TestBitcoinMonitor:
 
 You can run tests using
 
+```bash
 make up # to start all your containers 
 make pytest
+```
 
 ## 3. Scheduler
 
